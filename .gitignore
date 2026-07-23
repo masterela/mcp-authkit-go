@@ -1,0 +1,13 @@
+# Go build artifacts
+/mcp-authkit-go
+*.test
+*.out
+coverage.out
+coverage.txt
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
