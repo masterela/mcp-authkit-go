@@ -58,12 +58,15 @@ jobs:
         run: go test ./... -race -coverprofile=coverage.out
 
       - name: Upload coverage to Codecov
+        # fail_ci_if_error is false until CODECOV_TOKEN is configured on
+        # this repo (Settings -> Secrets and variables -> Actions) —
+        # flip to true once it's set, matching mcp-authkit's own ci.yml.
         if: matrix.go-version == '1.26'
         uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: coverage.out
-          fail_ci_if_error: true
+          fail_ci_if_error: false
 
   # ── Auto-tag on main when VERSION changes ────────────────────────────────────
   auto-tag:
